@@ -10,7 +10,6 @@ const server = http.createServer((req, res) => {
     "public",
     req.url === "/" ? "index.html" : req.url
   );
-  console.log(filePath);
 
   //Get file extension
   let extName = path.extname(filePath);
@@ -45,7 +44,6 @@ const server = http.createServer((req, res) => {
   //Read file
   fs.readFile(filePath, (err, content) => {
     if (err) {
-      console.log(err);
       if (err.code === "ENOENT") {
         //page not found
         fs.readFile(
