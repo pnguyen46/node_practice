@@ -1,77 +1,10 @@
-// const person = require('./person');
-// console.log(person);
-// console.log('Hello World from Node!');
-
-// const Person = require('./person');
-// const person1 = new Person('tron',28);
-// console.log(person1.name);
-
-// const Logger = require("./logger");
-// const fs = require("fs");
-// const path = require("path");
-
-// const logger = new Logger();
-
-// fs.writeFile(path.join(__dirname, "log.txt"), "", {}, (err) => {
-//   if (err) {
-//     throw err;
-//   }
-// });
-// logger.on("message", (data) => {
-//   console.log(`Called Listener:`, data);
-//   fs.appendFile(path.join(__dirname,'/log',"log.txt"), JSON.stringify(data), (err) => {
-//     if (err) {
-//       throw err;
-//     }
-//   });
-// });
-
-// logger.log("First one!");
-// logger.log('another gone')
-
 const path = require("path");
 const http = require("http");
 const fs = require("fs");
 
 const server = http.createServer((req, res) => {
-  //return the requested folder || page
-  // console.log(req.url);
-  // if (req.url === "/") {
-  //   fs.readFile(
-  //     path.join(__dirname, "/public", "index.html"),
-  //     (err, content) => {
-  //       if (err) {
-  //         throw err;
-  //       }
-  //       res.writeHead(200, { "Content-type": "text/html" });
-  //       res.end(content);
-  //     }
-  //   );
 
-  //   // res.writeHead(200,{'Content-type':'text/html'});
-  //   // res.end(`<h1>Home</h1>`);
-  // }else if(req.url === "/about"){
-  //   fs.readFile(
-  //     path.join(__dirname, "/public", "about.html"),
-  //     (err, content) => {
-  //       if (err) {
-  //         throw err;
-  //       }
-  //       res.writeHead(200, { "Content-type": "text/html" });
-  //       res.end(content);
-  //     }
-  //   );
-  // }else if(req.url === "/api/users"){
-  //   const users = [
-  //     {name:'Tron',age:28},
-  //     {name:'Win',age:27}
-  //   ];
-
-  //   res.writeHead(200,{"Content-type":"application/json"});
-  //   res.end(JSON.stringify(users));
-  // }
-
-  //Build file path
+  // //Build file path
   let filePath = path.join(
     __dirname,
     "public",
@@ -81,6 +14,7 @@ const server = http.createServer((req, res) => {
 
   //Get file extension
   let extName = path.extname(filePath);
+  
   //Initial content type
   let contentType = "text/html";
 
@@ -140,3 +74,86 @@ const server = http.createServer((req, res) => {
 const PORT = process.env.PORT || 5500;
 
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+
+
+//Practice Code:
+// const person = require('./person');
+// console.log(person);
+// console.log('Hello World from Node!');
+
+// const Person = require('./person');
+// const person1 = new Person('tron',28);
+// console.log(person1.name);
+
+// const Logger = require("./logger");
+// const fs = require("fs");
+// const path = require("path");
+
+// const logger = new Logger();
+
+// fs.writeFile(path.join(__dirname, "log.txt"), "", {}, (err) => {
+//   if (err) {
+//     throw err;
+//   }
+// });
+// logger.on("message", (data) => {
+//   console.log(`Called Listener:`, data);
+//   fs.appendFile(path.join(__dirname,'/log',"log.txt"), JSON.stringify(data), (err) => {
+//     if (err) {
+//       throw err;
+//     }
+//   });
+// });
+
+// logger.log("First one!");
+// logger.log('another gone')
+
+
+// Response from server
+// res.writeHead(200,{'Content-type':'text/html'});
+// res.end(`<h1>Home</h1>`);
+
+// Return the requested folder || page
+// console.log(req.url);
+
+//Basic request/response from client - server | server - client
+//Check url for requested page
+// if (req.url === "/") {
+//
+// Retrieve data from disk and response back to client with data | page
+//   fs.readFile(
+//     path.join(__dirname, "public", "index.html"),
+//     (err, content) => {
+//       if (err) {
+//         throw err;
+//       }
+//       res.writeHead(200, { "Content-type": "text/html" });
+//       res.end(content);
+//     }
+//   );
+// }else if(req.url === "/about"){
+//   fs.readFile(
+//     path.join(__dirname, "/public", "about.html"),
+//     (err, content) => {
+//       if (err) {
+//         throw err;
+//       }
+//       res.writeHead(200, { "Content-type": "text/html" });
+//       res.end(content);
+//     }
+//   );
+// }else if(req.url === "/api/users"){
+//   const users = [
+//     {name:'Tron',age:28},
+//     {name:'Win',age:27}
+//   ];
+
+//   res.writeHead(200,{"Content-type":"application/json"});
+//   res.end(JSON.stringify(users));
+// }else {
+//   console.error(new Error('Page not found'));
+//   res.writeHead(404,{'content-type':'text/html'});
+//   res.write('<h1>Page Not Found!</h1>');
+//   res.end();
+// }
